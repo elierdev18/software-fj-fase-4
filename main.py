@@ -1,17 +1,22 @@
+from modelos import Cliente
 from excepciones import ClienteInvalidoError
 
 
-def probar_excepcion_cliente():
-    """Demuestra el uso básico de una excepción personalizada."""
+try:
 
-    try:
-        raise ClienteInvalidoError(
-            "The client email is invalid."
-        )
-    except ClienteInvalidoError as error:
-        print(f"Controlled error: {error}")
+    cliente = Cliente(
+        "abc123",
+        "Elier",
+        "elier@email.com",
+        "3001234567"
+    )
 
+    print(
+        cliente.mostrar_datos()
+    )
 
-if __name__ == "__main__":
-    probar_excepcion_cliente()
-    print("The program continues running.")
+except ClienteInvalidoError as error:
+
+    print(
+        f"Client error: {error}"
+    )
